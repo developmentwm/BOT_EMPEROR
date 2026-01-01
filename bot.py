@@ -1,7 +1,10 @@
+import os
+os.environ["DISCORD_DISABLE_VOICE"] = "1"  # WAJIB: cegah error voice di Railway
+
 import discord
 from discord.ext import commands
 
-TOKEN = "TOKEN_BOT_DISCORD"  # Railway pakai ENV
+TOKEN = os.getenv("TOKEN_BOT_DISCORD")  # ambil dari Railway ENV
 TARGET_ROLE_NAME = "emperor7g"  # Ganti sesuai role tujuan
 
 intents = discord.Intents.default()
@@ -10,7 +13,6 @@ intents.guilds = True
 intents.members = True
 
 bot = commands.Bot(command_prefix="!", intents=intents)
-
 
 class AnnouncementModal(discord.ui.Modal, title="📢 Pengumuman Emperor"):
     message = discord.ui.InputText(
