@@ -1,8 +1,0 @@
-{
-  "name": "announce-bot",
-  "version": "1.0.0",
-  "type": "module",
-  "dependencies": {
-    "discord.js": "^14.14.1"
-  }
-}
