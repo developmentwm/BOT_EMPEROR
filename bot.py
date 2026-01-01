@@ -15,14 +15,21 @@ intents.members = True
 bot = commands.Bot(command_prefix="!", intents=intents)
 
 
-class AnnounceModal(discord.ui.Modal, title="📢 Pengumuman Emperor"):
-    announcement = discord.ui.InputText(
-        label="Isi Pengumuman",
-        style=discord.InputTextStyle.long,
-        placeholder="Tulis pengumuman di sini...",
-        required=True,
-        max_length=2000
-    )
+class AnnounceModal(discord.ui.Modal):
+    title = "📢 Pengumuman Emperor"
+
+    def __init__(self):
+        super().__init__()
+
+        self.announcement = discord.ui.InputText(
+            label="Isi Pengumuman",
+            style=discord.InputTextStyle.long,
+            placeholder="Tulis pengumuman di sini...",
+            required=True,
+            max_length=2000
+        )
+
+        self.add_item(self.announcement)
 
     async def callback(self, interaction: discord.Interaction):
         role = discord.utils.get(
